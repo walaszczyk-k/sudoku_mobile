@@ -1,0 +1,283 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+  font-family: "Grandstander", cursive;
+}
+
+$green-color: rgb(142, 255, 142);
+$red-color: rgb(255, 133, 133);
+$yellow-color: rgb(255, 255, 134);
+$blue-color: rgb(102, 218, 253);
+$grey-color: #333;
+
+@mixin centerElement {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin btn($paddingVert, $paddingHor, $fz) {
+  margin: 8px 0;
+  padding: $paddingVert $paddingHor;
+  border: 1px solid $grey-color;
+  border-radius: 40px;
+  background-color: transparent;
+  font-weight: 900;
+  font-size: $fz;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.reset_link {
+  text-decoration: none;
+  color: $grey-color;
+}
+
+.home {
+  width: 100vw;
+  height: 100vh;
+  background-size: 400% 400%;
+  background-image: linear-gradient(150deg, $red-color , $yellow-color, $blue-color);
+  animation: gradient 5s ease infinite;
+
+  &__box {
+    @include centerElement;
+    @include flexCol;
+    right: 50%;
+    justify-content: space-between;
+    width: 45vw;
+    height: 64vh;
+
+    &--not_main {
+      width: 80vw;
+      padding-top: 30px;
+    }
+
+    &__header {
+      &--not_main {
+        position: absolute;
+        top: -24%;
+        left: -3vh;
+      }
+
+      &__h1 {
+        font-size: 4rem;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 900;
+        line-height: 1;
+        color: $grey-color;
+
+        &--not_main {
+          text-align: left;
+        }
+      }
+
+      &__span {
+        display: block;
+        font-size: 3rem;
+        text-align: center;
+        text-transform: lowercase;
+        font-weight: 400;
+        color: $grey-color;
+
+        &--not_main {
+          text-align: left;
+        }
+      }
+    }
+
+    &__btns {
+      @include flexCol;
+
+      &__btn {
+        @include btn(18px, 8px, 1.6rem);
+
+        &:nth-child(1) {
+          padding: 24px 8px;
+          border-color: green;
+          border-width: 2px;
+          color: green;
+          animation: playButton-animation 2s ease infinite 10s;
+        }
+      }
+    }
+
+    &__modal {
+      @include flexCol;
+      align-items: center;
+      padding: 20px 10px;
+      z-index: 3;
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+
+      &__header {
+        padding: 0 10px;
+        text-align: center;
+        font-size: 1.8rem;
+      }
+
+      &__p {
+        padding: 28px 0;
+        padding-bottom: 12%;
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      &__choice_btn {
+        @include btn(8px, 0px, 1.4rem);
+        width: 64%;
+        font-weight: 600;
+
+        &:nth-of-type(1) {
+          background: $green-color;
+        }
+
+        &:nth-of-type(2) {
+          background-color: $red-color;
+        }
+
+        &:nth-of-type(3) {
+          background-color: $yellow-color;
+        }
+      }
+    }
+
+    &__article {
+      margin: -20px;
+
+      &__header {
+        font-size: 3rem;
+      }
+
+      &__box {
+        margin: 30px 0;
+
+        &__header {
+          font-size: 2.2rem;
+          margin: 10px 0;
+        }
+
+        &__content {
+          font-size: 1.6rem;
+        }
+      }
+    }
+
+      &__footer {
+        position: absolute;
+        bottom: -26%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50vw;
+        text-align: center;
+
+        &__p {
+          font-size: 1.6rem;
+        }
+
+        &__span {
+          font-size: 1.6rem;
+
+          &:nth-child(1) {
+            color: yellowgreen;
+          }
+
+          &:nth-child(2) {
+            color: violet;
+          }
+        }
+      }
+
+    }
+  }
+
+  .sudoku {
+    margin: -56px -20px;
+    @include flexCol;
+    align-items: center;
+    &__timer {
+      font-size: 3rem;
+      & span {
+        font-size: 3rem;
+      }
+      &__buttons {
+        &__button {
+          @include btn(8px, 10px, 1.4rem);
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+    }
+    &__box {
+      width: 90vw;
+      height: 64vh;
+      display: flex;
+      flex-wrap: wrap;
+      &__3x3 {
+        flex-basis: 33.3%;
+        display: flex;
+        flex-wrap: wrap;
+        border: 0.5px solid blue;
+        &__one {
+          padding: 8px 0;
+          width: 33.3%;
+          background-color: transparent;
+          flex-basis: 33.3%;
+          border: 0.5px dotted $grey-color;
+          font-size: 2rem;
+          text-align: center;
+          align-self: center;
+          &:focus {
+            outline-color: blue;
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes playButton-animation {
+    0% {
+      transform: translateY(0);
+    }
+
+    20% {
+      transform: translateY(-15%);
+    }
+
+    45% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+
+  }
+
+
+  /*# sourceMappingURL=style.css.map */
+
+  /*# sourceMappingURL=style.scss.map */
