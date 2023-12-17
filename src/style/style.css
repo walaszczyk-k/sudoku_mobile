@@ -200,14 +200,14 @@
   border: 0.5px solid blue;
 }
 .sudoku__box__3x3__one {
-  padding: 8px 0;
   width: 33.3%;
-  background-color: transparent;
-  flex-basis: 33.3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 0.5px dotted #333;
+  background-color: transparent;
   font-size: 2rem;
   text-align: center;
-  align-self: center;
 }
 .sudoku__box__3x3__one:focus {
   outline-color: blue;

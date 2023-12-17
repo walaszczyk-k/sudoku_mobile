@@ -228,14 +228,15 @@ $grey-color: #333;
         flex-wrap: wrap;
         border: 0.5px solid blue;
         &__one {
-          padding: 8px 0;
           width: 33.3%;
-          background-color: transparent;
-          flex-basis: 33.3%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           border: 0.5px dotted $grey-color;
+          background-color: transparent;
           font-size: 2rem;
           text-align: center;
-          align-self: center;
+          
           &:focus {
             outline-color: blue;
           }
