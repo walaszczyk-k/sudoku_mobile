@@ -27,7 +27,7 @@ const Home = () => {
             >
               How to play
             </Link>
-            <button className="home__box__btns__btn">Settings</button>
+            <button className="reset_link home__box__btns__btn">Settings</button>
           </div>
           <Footer />
         </div>
