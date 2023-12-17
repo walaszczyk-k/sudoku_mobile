@@ -154,6 +154,7 @@ const Game = () => {
                         className="sudoku__box__3x3__one"
                         type="text"
                         maxLength={1}
+                        style={{ fontWeight: "bold" }}
                       ></input>
                     );
                   } else {
@@ -168,7 +169,9 @@ const Game = () => {
                     return (
                       <input
                         className="sudoku__box__3x3__one"
-                        type="number"
+                        type="text"
+                        maxLength={1}
+                        style={{ fontWeight: "bold" }}
                       ></input>
                     );
                   } else {
@@ -183,7 +186,9 @@ const Game = () => {
                     return (
                       <input
                         className="sudoku__box__3x3__one"
-                        type="number"
+                        type="text"
+                        maxLength={1}
+                        style={{ fontWeight: "bold" }}
                       ></input>
                     );
                   } else {
@@ -198,7 +203,9 @@ const Game = () => {
                     return (
                       <input
                         className="sudoku__box__3x3__one"
-                        type="number"
+                        type="text"
+                        maxLength={1}
+                        style={{ fontWeight: "bold" }}
                       ></input>
                     );
                   } else {
@@ -213,7 +220,9 @@ const Game = () => {
                     return (
                       <input
                         className="sudoku__box__3x3__one"
-                        type="number"
+                        type="text"
+                        maxLength={1}
+                        style={{ fontWeight: "bold" }}
                       ></input>
                     );
                   } else {
@@ -228,7 +237,9 @@ const Game = () => {
                     return (
                       <input
                         className="sudoku__box__3x3__one"
-                        type="number"
+                        type="text"
+                        maxLength={1}
+                        style={{ fontWeight: "bold" }}
                       ></input>
                     );
                   } else {
@@ -243,7 +254,9 @@ const Game = () => {
                     return (
                       <input
                         className="sudoku__box__3x3__one"
-                        type="number"
+                        type="text"
+                        maxLength={1}
+                        style={{ fontWeight: "bold" }}
                       ></input>
                     );
                   } else {
@@ -258,7 +271,9 @@ const Game = () => {
                     return (
                       <input
                         className="sudoku__box__3x3__one"
-                        type="number"
+                        type="text"
+                        maxLength={1}
+                        style={{ fontWeight: "bold" }}
                       ></input>
                     );
                   } else {
@@ -273,7 +288,9 @@ const Game = () => {
                     return (
                       <input
                         className="sudoku__box__3x3__one"
-                        type="number"
+                        type="text"
+                        maxLength={1}
+                        style={{ fontWeight: "bold" }}
                       ></input>
                     );
                   } else {
