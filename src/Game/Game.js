@@ -8,69 +8,17 @@ import { sudoku } from "../sudokuRobatronGithub";
 const Game = () => {
   const [time, setTime] = useState(0);
   const [running, setRunning] = useState(true);
+  const [sudokuResults, setsudokuResults] = useState([]);
+  const [sudokuCurrent, setsudokuCurrent] = useState([]);
+  const [sudokuChecker, setSudokuChecker] = useState([]);
+  const [isChecked, setIsChecked] = useState(false);
 
   const loadSudokuData = () => {
     let sudokuGenerator = sudoku.board_string_to_grid(sudoku.generate("easy"));
-    let first = Array(
-      sudokuGenerator[0]
-        .slice(0, 3)
-        .concat(sudokuGenerator[1].slice(0, 3), sudokuGenerator[2].slice(0, 3))
-    );
-    let second = Array(
-      sudokuGenerator[0]
-        .slice(3, 6)
-        .concat(sudokuGenerator[1].slice(3, 6), sudokuGenerator[2].slice(3, 6))
-    );
-    let third = Array(
-      sudokuGenerator[0]
-        .slice(6, 9)
-        .concat(sudokuGenerator[1].slice(6, 9), sudokuGenerator[2].slice(6, 9))
-    );
-    let fourth = Array(
-      sudokuGenerator[3]
-        .slice(0, 3)
-        .concat(sudokuGenerator[4].slice(0, 3), sudokuGenerator[5].slice(0, 3))
-    );
-    let fifth = Array(
-      sudokuGenerator[3]
-        .slice(3, 6)
-        .concat(sudokuGenerator[4].slice(3, 6), sudokuGenerator[5].slice(3, 6))
-    );
-    let sixth = Array(
-      sudokuGenerator[3]
-        .slice(6, 9)
-        .concat(sudokuGenerator[4].slice(6, 9), sudokuGenerator[5].slice(6, 9))
-    );
-    let seventh = Array(
-      sudokuGenerator[6]
-        .slice(0, 3)
-        .concat(sudokuGenerator[7].slice(0, 3), sudokuGenerator[8].slice(0, 3))
-    );
-    let eightth = Array(
-      sudokuGenerator[6]
-        .slice(3, 6)
-        .concat(sudokuGenerator[7].slice(3, 6), sudokuGenerator[8].slice(3, 6))
-    );
-    let nineth = Array(
-      sudokuGenerator[6]
-        .slice(6, 9)
-        .concat(sudokuGenerator[7].slice(6, 9), sudokuGenerator[8].slice(6, 9))
-    );
-    let sudokuResult = Array(
-      first.concat(
-        second,
-        third,
-        fourth,
-        fifth,
-        sixth,
-        seventh,
-        eightth,
-        nineth
-      )
-    );
-    console.log(first);
-    console.log(sudokuResult);
-    return sudokuResult;
+    let sudokuDataArray = [].concat(...sudokuGenerator);
+    setsudokuCurrent(sudokuDataArray);
+    setsudokuResults([].concat(...sudoku.solve(sudokuDataArray)));
+    return sudokuDataArray;
   };
   const [sudokuData, setsudokuData] = useState(() => loadSudokuData());
 
@@ -86,10 +34,25 @@ const Game = () => {
     return () => clearInterval(interval);
   }, [running]);
 
+  const handleChange = (index, event) => {
+    const updatedNumbers = [...sudokuCurrent];
+    updatedNumbers[index] = event.target.value;
+    setsudokuCurrent(updatedNumbers);
+  };
+
   const newGameActions = () => {
     setTime(0);
     setRunning(true);
     setsudokuData(loadSudokuData());
+    console.log(sudokuChecker);
+  };
+
+  const checkGame = () => {
+    setRunning(false);
+    setSudokuChecker(
+      sudokuResults.map((element, index) => element === sudokuCurrent[index])
+    );
+    setIsChecked(true);
   };
 
   return (
@@ -142,270 +105,57 @@ const Game = () => {
               >
                 New Game
               </button>
-              <button className="sudoku__timer__buttons__button">Check</button>
+              <button
+                className="sudoku__timer__buttons__button"
+                onClick={() => checkGame()}
+              >
+                Check
+              </button>
             </div>
             <div className="sudoku__box">
-              <div className="sudoku__box__3x3">
-                {sudokuData[0][0].map((data) => {
-                  if (data === ".") {
-                    if (running) {
-                      return (
-                        <input
-                          className="sudoku__box__3x3__one"
-                          type="text"
-                          maxLength={1}
-                          style={{ fontWeight: "bold" }}
-                        ></input>
-                      );
-                    }
-                    else {
-                      return (
+              {sudokuData.map((number, index) => {
+                if (number === ".") {
+                  if (running) {
+                    return (
                       <input
-                        className="sudoku__box__3x3__one"
+                        className="sudoku__box__cell"
                         type="text"
                         maxLength={1}
-                        style={{ fontWeight: "bold" }}
-                        disabled
+                        style={{
+                          background:
+                            isChecked ||
+                            sudokuChecker.length === 0 ||
+                            sudokuChecker[index]
+                              ? "transparent"
+                              : "red",
+                          fontWeight: 900,
+                        }}
+                        onChange={(e) => handleChange(index, e)}
                       ></input>
-                      );
-                    }
+                    );
                   } else {
-                    return <div className="sudoku__box__3x3__one">{data}</div>;
-                  }
-                })}
-              </div>
-              <div className="sudoku__box__3x3">
-                {sudokuData[0][1].map((data) => {
-                  if (data === ".") {
-                    if (running) {
-                      return (
-                        <input
-                          className="sudoku__box__3x3__one"
-                          type="text"
-                          maxLength={1}
-                          style={{ fontWeight: "bold" }}
-                        ></input>
-                      );
-                    } else {
-                      return (
+                    return (
                       <input
-                        className="sudoku__box__3x3__one"
+                        className="sudoku__box__cell"
                         type="text"
                         maxLength={1}
-                        style={{ fontWeight: "bold" }}
+                        style={{
+                          background:
+                            !isChecked ||
+                            sudokuChecker.length == !0 ||
+                            sudokuChecker[index]
+                              ? "transparent"
+                              : "red",
+                          fontWeight: 900,
+                        }}
                         disabled
                       ></input>
-                      );
-                    }
-                    
-                  } else {
-                    return <div className="sudoku__box__3x3__one">{data}</div>;
+                    );
                   }
-                })}
-              </div>
-              <div className="sudoku__box__3x3">
-                {sudokuData[0][2].map((data) => {
-                  if (data === ".") {
-                    if (running) {
-                      return (
-                        <input
-                          className="sudoku__box__3x3__one"
-                          type="text"
-                          maxLength={1}
-                          style={{ fontWeight: "bold" }}
-                        ></input>
-                      );
-                    }
-                    else {
-                      return (
-                      <input
-                        className="sudoku__box__3x3__one"
-                        type="text"
-                        maxLength={1}
-                        style={{ fontWeight: "bold" }}
-                        disabled
-                      ></input>
-                      );
-                    }
-                  } else {
-                    return <div className="sudoku__box__3x3__one">{data}</div>;
-                  }
-                })}
-              </div>
-              <div className="sudoku__box__3x3">
-                {sudokuData[0][3].map((data) => {
-                  if (data === ".") {
-                    if (running) {
-                      return (
-                        <input
-                          className="sudoku__box__3x3__one"
-                          type="text"
-                          maxLength={1}
-                          style={{ fontWeight: "bold" }}
-                        ></input>
-                      );
-                    }
-                    else {
-                      return (
-                      <input
-                        className="sudoku__box__3x3__one"
-                        type="text"
-                        maxLength={1}
-                        style={{ fontWeight: "bold" }}
-                        disabled
-                      ></input>
-                      );
-                    }
-                  } else {
-                    return <div className="sudoku__box__3x3__one">{data}</div>;
-                  }
-                })}
-              </div>
-              <div className="sudoku__box__3x3">
-                {sudokuData[0][4].map((data) => {
-                  if (data === ".") {
-                    if (running) {
-                      return (
-                        <input
-                          className="sudoku__box__3x3__one"
-                          type="text"
-                          maxLength={1}
-                          style={{ fontWeight: "bold" }}
-                        ></input>
-                      );
-                    }
-                    else {
-                      return (
-                      <input
-                        className="sudoku__box__3x3__one"
-                        type="text"
-                        maxLength={1}
-                        style={{ fontWeight: "bold" }}
-                        disabled
-                      ></input>
-                      );
-                    }
-                  } else {
-                    return <div className="sudoku__box__3x3__one">{data}</div>;
-                  }
-                })}
-              </div>
-              <div className="sudoku__box__3x3">
-                {sudokuData[0][5].map((data) => {
-                  if (data === ".") {
-                    if (running) {
-                      return (
-                        <input
-                          className="sudoku__box__3x3__one"
-                          type="text"
-                          maxLength={1}
-                          style={{ fontWeight: "bold" }}
-                        ></input>
-                      );
-                    }
-                    else {
-                      return (
-                      <input
-                        className="sudoku__box__3x3__one"
-                        type="text"
-                        maxLength={1}
-                        style={{ fontWeight: "bold" }}
-                        disabled
-                      ></input>
-                      );
-                    }
-                  } else {
-                    return <div className="sudoku__box__3x3__one">{data}</div>;
-                  }
-                })}
-              </div>
-              <div className="sudoku__box__3x3">
-                {sudokuData[0][6].map((data) => {
-                  if (data === ".") {
-                    if (running) {
-                      return (
-                        <input
-                          className="sudoku__box__3x3__one"
-                          type="text"
-                          maxLength={1}
-                          style={{ fontWeight: "bold" }}
-                        ></input>
-                      );
-                    }
-                    else {
-                      return (
-                      <input
-                        className="sudoku__box__3x3__one"
-                        type="text"
-                        maxLength={1}
-                        style={{ fontWeight: "bold" }}
-                        disabled
-                      ></input>
-                      );
-                    }
-                  } else {
-                    return <div className="sudoku__box__3x3__one">{data}</div>;
-                  }
-                })}
-              </div>
-              <div className="sudoku__box__3x3">
-                {sudokuData[0][7].map((data) => {
-                  if (data === ".") {
-                    if (running) {
-                      return (
-                        <input
-                          className="sudoku__box__3x3__one"
-                          type="text"
-                          maxLength={1}
-                          style={{ fontWeight: "bold" }}
-                        ></input>
-                      );
-                    }
-                    else {
-                      return (
-                      <input
-                        className="sudoku__box__3x3__one"
-                        type="text"
-                        maxLength={1}
-                        style={{ fontWeight: "bold" }}
-                        disabled
-                      ></input>
-                      );
-                    }
-                  } else {
-                    return <div className="sudoku__box__3x3__one">{data}</div>;
-                  }
-                })}
-              </div>
-              <div className="sudoku__box__3x3">
-                {sudokuData[0][8].map((data) => {
-                  if (data === ".") {
-                    if (running) {
-                      return (
-                        <input
-                          className="sudoku__box__3x3__one"
-                          type="text"
-                          maxLength={1}
-                          style={{ fontWeight: "bold" }}
-                        ></input>
-                      );
-                    }
-                    else {
-                      return (
-                      <input
-                        className="sudoku__box__3x3__one"
-                        type="text"
-                        maxLength={1}
-                        style={{ fontWeight: "bold" }}
-                        disabled
-                      ></input>
-                      );
-                    }
-                  } else {
-                    return <div className="sudoku__box__3x3__one">{data}</div>;
-                  }
-                })}
-              </div>
+                } else {
+                  return <div className="sudoku__box__cell">{number}</div>;
+                }
+              })}
             </div>
           </div>
           <Footer />

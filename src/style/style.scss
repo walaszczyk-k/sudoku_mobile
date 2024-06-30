@@ -45,7 +45,12 @@ $grey-color: #333;
   width: 100vw;
   height: 100vh;
   background-size: 400% 400%;
-  background-image: linear-gradient(150deg, $red-color , $yellow-color, $blue-color);
+  background-image: linear-gradient(
+    150deg,
+    $red-color,
+    $yellow-color,
+    $blue-color
+  );
   animation: gradient 5s ease infinite;
 
   &__box {
@@ -172,118 +177,123 @@ $grey-color: #333;
       }
     }
 
-      &__footer {
-        position: absolute;
-        bottom: -26%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 50vw;
-        text-align: center;
+    &__footer {
+      position: absolute;
+      bottom: -26%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50vw;
+      text-align: center;
 
-        &__p {
-          font-size: 1.6rem;
-        }
-
-        &__span {
-          font-size: 1.6rem;
-
-          & a {
-            text-decoration: none;
-            font-size: 1em;
-          }
-
-          &:nth-child(1) {
-            color: yellowgreen;
-          }
-
-          &:nth-child(2) {
-            color: violet;
-          }
-        }
+      &__p {
+        font-size: 1.6rem;
       }
 
+      &__span {
+        font-size: 1.6rem;
+
+        & a {
+          text-decoration: none;
+          font-size: 1em;
+        }
+
+        &:nth-child(1) {
+          color: yellowgreen;
+        }
+
+        &:nth-child(2) {
+          color: violet;
+        }
+      }
     }
   }
+}
 
-  .sudoku {
-    margin: -56px -20px;
-    @include flexCol;
-    align-items: center;
-    &__timer {
+.sudoku {
+  margin: -56px -20px;
+  @include flexCol;
+  align-items: center;
+  &__timer {
+    font-size: 3rem;
+    & span {
       font-size: 3rem;
-      & span {
-        font-size: 3rem;
-      }
-      &__buttons {
-        &__button {
-          @include btn(8px, 10px, 1.4rem);
-          margin-left: 10px;
-          margin-right: 10px;
-        }
+    }
+    &__buttons {
+      &__button {
+        @include btn(8px, 10px, 1.4rem);
+        margin-left: 10px;
+        margin-right: 10px;
       }
     }
-    &__box {
-      width: 90vw;
-      height: 64vh;
+  }
+  &__box {
+    width: 90vw;
+    height: 64vh;
+    display: grid;
+    grid-template-columns: repeat(
+      9,
+      calc(90vw / 9)
+    );
+    grid-template-rows: repeat(9, calc(64vh / 9));
+    border: 1px solid black;
+    &__cell {
       display: flex;
-      flex-wrap: wrap;
-      &__3x3 {
-        flex-basis: 33.3%;
-        display: flex;
-        flex-wrap: wrap;
-        border: 0.5px solid blue;
-        &__one {
-          width: 33.3%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border: 0.5px dotted $grey-color;
-          background-color: transparent;
-          font-size: 2rem;
-          text-align: center;
-          
-          &:focus {
-            outline-color: blue;
-          }
-        }
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      border: 0.5px dotted $grey-color;
+      background-color: transparent;
+      font-size: 2rem;
+      text-align: center;
+      &:focus {
+        outline-color: blue;
+        background-color: #33333357;
       }
+      &:nth-child(3n+1){
+        border-left: 1px solid black;
+      }
+      &:nth-child(3n){
+        border-right: 1px solid black;
     }
+      &:nth-child(n + 19):nth-child(-n + 27),
+      &:nth-child(n + 46):nth-child(-n + 54) {
+        border-bottom: 2px solid black;
+    }}
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
 
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-
-    50% {
-      background-position: 100% 50%;
-    }
-
-    100% {
-      background-position: 0% 50%;
-    }
+  50% {
+    background-position: 100% 50%;
   }
 
-  @keyframes playButton-animation {
-    0% {
-      transform: translateY(0);
-    }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
-    20% {
-      transform: translateY(-15%);
-    }
-
-    45% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateY(0);
-    }
-
+@keyframes playButton-animation {
+  0% {
+    transform: translateY(0);
   }
 
+  20% {
+    transform: translateY(-15%);
+  }
 
-  /*# sourceMappingURL=style.css.map */
+  45% {
+    transform: translateX(0);
+  }
 
-  /*# sourceMappingURL=style.scss.map */
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
+
+/*# sourceMappingURL=style.scss.map */
