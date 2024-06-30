@@ -155,6 +155,10 @@
 .home__box__footer__span {
   font-size: 1.6rem;
 }
+.home__box__footer__span a {
+  text-decoration: none;
+  font-size: 1em;
+}
 .home__box__footer__span:nth-child(1) {
   color: yellowgreen;
 }
@@ -238,7 +242,7 @@
     transform: translateY(0);
   }
 }
-/*# sourceMappingURL=style.css.map */
-/*# sourceMappingURL=style.scss.map */
+
+
 
 /*# sourceMappingURL=style.css.map */

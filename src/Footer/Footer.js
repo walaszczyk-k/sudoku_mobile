@@ -8,8 +8,12 @@ const Footer = () => {
       <div className="home__box__footer">
         <a href="/" className="reset_link">
           <p className="home__box__footer__p">
-            made<span className="home__box__footer__span"> by</span>
-            <span className="home__box__footer__span"> mrsw444</span>
+            made<span className="home__box__footer__span"> by </span>
+            <span className="home__box__footer__span">
+              <a href="https://github.com/walaszczyk-k/sudoku_mobile" target="_blank">
+                mrsw444
+              </a>
+            </span>
           </p>
         </a>
       </div>

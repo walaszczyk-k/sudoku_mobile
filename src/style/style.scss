@@ -187,6 +187,11 @@ $grey-color: #333;
         &__span {
           font-size: 1.6rem;
 
+          & a {
+            text-decoration: none;
+            font-size: 1em;
+          }
+
           &:nth-child(1) {
             color: yellowgreen;
           }
