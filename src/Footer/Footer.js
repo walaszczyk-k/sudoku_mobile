@@ -10,7 +10,7 @@ const Footer = () => {
           <p className="home__box__footer__p">
             made<span className="home__box__footer__span"> by </span>
             <span className="home__box__footer__span">
-              <a href="https://github.com/walaszczyk-k/sudoku_mobile" target="_blank">
+              <a href="https://github.com/walaszczyk-k" target="_blank">
                 mrsw444
               </a>
             </span>
