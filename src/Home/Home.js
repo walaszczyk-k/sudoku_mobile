@@ -8,6 +8,7 @@ const Home = () => {
   return (
     <>
       <section className="home">
+        {Array.from({length:12},(v,k)=>k+1).map((idx) => {return <div className="box-animated" id={idx}></div>})}
         <div className="home__box">
           <div className="home__box__header">
             <h1 className="home__box__header__h1">
@@ -27,7 +28,7 @@ const Home = () => {
             >
               How to play
             </Link>
-            <button className="reset_link home__box__btns__btn">Settings</button>
+            <button className="reset_link home__box__btns__btn">Setting</button>
           </div>
           <Footer />
         </div>

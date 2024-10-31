@@ -223,6 +223,74 @@
   border-bottom: 2px solid black;
 }
 
+.box-animated {
+  position: fixed;
+  width: 26px;
+  height: 26px;
+  background-color: transparent;
+  border: 3px solid #666;
+}
+.box-animated:nth-child(1) {
+  top: 19%;
+  left: 11%;
+  animation: boxes-top 26s linear infinite;
+}
+.box-animated:nth-child(2) {
+  top: 27%;
+  left: 49%;
+  animation: boxes-top 19s linear infinite;
+}
+.box-animated:nth-child(3) {
+  top: 26%;
+  left: 63%;
+  animation: boxes-top 22s linear infinite;
+}
+.box-animated:nth-child(4) {
+  top: 29%;
+  left: 58%;
+  animation: boxes-top 8s linear infinite;
+}
+.box-animated:nth-child(5) {
+  top: 24%;
+  left: 34%;
+  animation: boxes-top 25s linear infinite;
+}
+.box-animated:nth-child(6) {
+  top: 19%;
+  left: 48%;
+  animation: boxes-top 24s linear infinite;
+}
+.box-animated:nth-child(7) {
+  top: 8%;
+  left: 44%;
+  animation: boxes-top 22s linear infinite;
+}
+.box-animated:nth-child(8) {
+  bottom: 13%;
+  right: 21%;
+  animation: boxes-bottom 13s linear infinite;
+}
+.box-animated:nth-child(9) {
+  bottom: 7%;
+  right: 59%;
+  animation: boxes-bottom 23s linear infinite;
+}
+.box-animated:nth-child(10) {
+  bottom: 1%;
+  right: 41%;
+  animation: boxes-bottom 10s linear infinite;
+}
+.box-animated:nth-child(11) {
+  bottom: 14%;
+  right: 47%;
+  animation: boxes-bottom 22s linear infinite;
+}
+.box-animated:nth-child(12) {
+  bottom: 0%;
+  right: 2%;
+  animation: boxes-bottom 29s linear infinite;
+}
+
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -246,6 +314,44 @@
   }
   100% {
     transform: translateY(0);
+  }
+}
+@keyframes boxes-top {
+  0% {
+    transform: scale(0) translateY(0) translateX(0) rotate(0);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(0.5) translateY(50%) translateX(150%) rotate(180deg);
+  }
+  50% {
+    transform: scale(1) translateY(100%) translateX(-150%) rotate(0deg);
+  }
+  75% {
+    transform: scale(1.5) translateY(150%) translateX(100%) rotate(180deg);
+  }
+  100% {
+    transform: scale(2) translateY(220%) translateX(-50%) rotate(240deg);
+    opacity: 0;
+  }
+}
+@keyframes boxes-bottom {
+  0% {
+    transform: scale(0) translateY(0) translateX(0) rotate(0);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(0.5) translateY(-50%) translateX(-150%) rotate(180deg);
+  }
+  50% {
+    transform: scale(1) translateY(-100%) translateX(150%) rotate(0deg);
+  }
+  75% {
+    transform: scale(1.5) translateY(-150%) translateX(-100%) rotate(180deg);
+  }
+  100% {
+    transform: scale(2) translateY(-220%) translateX(50%) rotate(240deg);
+    opacity: 0;
   }
 }
 
