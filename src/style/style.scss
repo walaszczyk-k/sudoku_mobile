@@ -41,9 +41,15 @@ $grey-color: #333;
   color: $grey-color;
 }
 
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .home {
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
+  position: relative;
   background-size: 400% 400%;
   background-image: linear-gradient(
     150deg,
@@ -52,25 +58,25 @@ $grey-color: #333;
     $blue-color
   );
   animation: gradient 5s ease infinite;
+  overflow: hidden;
 
   &__box {
     @include centerElement;
     @include flexCol;
     right: 50%;
     justify-content: space-between;
-    width: 45vw;
-    height: 64vh;
+    width: 45dvw;
+    height: 60dvh;
 
     &--not_main {
-      width: 80vw;
-      padding-top: 30px;
+      width: 92vw;
     }
 
     &__header {
       &--not_main {
         position: absolute;
-        top: -24%;
-        left: -3vh;
+        top: -30%;
+        left: 0;
       }
 
       &__h1 {
@@ -80,9 +86,11 @@ $grey-color: #333;
         font-weight: 900;
         line-height: 1;
         color: $grey-color;
+        user-select: none;
 
         &--not_main {
           text-align: left;
+          font-size: 3rem;
         }
       }
 
@@ -96,6 +104,7 @@ $grey-color: #333;
 
         &--not_main {
           text-align: left;
+          font-size: 2rem;
         }
       }
     }
@@ -119,10 +128,9 @@ $grey-color: #333;
     &__modal {
       @include flexCol;
       align-items: center;
-      padding: 20px 10px;
-      z-index: 3;
+      padding: 36px 10px;
       background-color: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
+      border-radius: 40px;
 
       &__header {
         padding: 0 10px;
@@ -132,26 +140,19 @@ $grey-color: #333;
 
       &__p {
         padding: 28px 0;
-        padding-bottom: 12%;
         font-size: 2rem;
         text-align: center;
       }
 
       &__choice_btn {
-        @include btn(8px, 0px, 1.4rem);
+        @include btn(12px, 0, 1.4rem);
         width: 64%;
         font-weight: 600;
-
-        &:nth-of-type(1) {
-          background: $green-color;
-        }
-
-        &:nth-of-type(2) {
-          background-color: $red-color;
-        }
-
-        &:nth-of-type(3) {
-          background-color: $yellow-color;
+        $color_buttons: ("1": $green-color, "2": $red-color, "3": $yellow-color);
+        @each $idx, $color in $color_buttons {
+          &:nth-of-type(#{$idx}) {
+            background: $color;
+          }
         }
       }
     }
@@ -179,7 +180,7 @@ $grey-color: #333;
 
     &__footer {
       position: absolute;
-      bottom: -26%;
+      bottom: -30%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 50vw;
@@ -209,44 +210,89 @@ $grey-color: #333;
   }
 }
 
-.sudoku {
-  margin: -56px -20px;
+.sudoku_main_page {
+  width: 94dvw;
+  height: 100dvh;
+  margin: 10px auto;
   @include flexCol;
-  align-items: center;
-  &__timer {
-    font-size: 3rem;
-    & span {
-      font-size: 3rem;
-    }
-    &__buttons {
-      &__button {
-        @include btn(8px, 10px, 1.4rem);
-        margin-left: 10px;
-        margin-right: 10px;
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+   
+    &__title {
+      &__h1 {
+        font-size: 3rem;
+        text-align: left;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 900;
+        line-height: 1;
+        color: $grey-color;
+        user-select: none;
+      }
+
+      &__span {
+        display: block;
+        text-align: left;
+        font-size: 2rem;
+        text-transform: lowercase;
+        font-weight: 400;
+        color: $grey-color;
+
       }
     }
+
+    &__timer {
+      @include flexCol;
+      flex-basis: 70%;
+      align-items: center;
+      &__p {
+        width: 100%;
+        text-align: center;
+        & span {
+          font-size: 2.8rem;
+          padding: 2%;
+        }
+      }
+      &__btns {
+        flex-wrap: nowrap;
+        &__btn {
+          @include btn(6px, 8px, 1.2rem);
+          margin-left: 4px;
+          margin-right: 4px;
+        }
+      }
+
+    }
   }
+
+  &__game {
+    background-color: rgba(65, 56, 56, 0.152);
+  }
+}
+
+.sudoku {
+  @include flexCol;
+  align-items: center;
+  
   &__box {
-    width: 90vw;
-    height: 64vh;
     display: grid;
     grid-template-columns: repeat(
       9,
-      calc(90vw / 9)
+      calc(94dvw / 9)
     );
-    grid-template-rows: repeat(9, calc(64vh / 9));
+    grid-template-rows: repeat(9, calc(86dvh / 9));
     border: 1px solid black;
     &__cell {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 14px;
       border: 0.5px dotted $grey-color;
-      background-color: transparent;
       font-size: 2rem;
-      text-align: center;
       &:focus {
-        outline-color: blue;
+        // outline-color: rgb(124, 123, 30);
         background-color: #33333357;
       }
       &:nth-child(3n+1){
@@ -369,5 +415,3 @@ $grey-color: #333;
 
 }
 /*# sourceMappingURL=style.css.map */
-
-/*# sourceMappingURL=style.scss.map */

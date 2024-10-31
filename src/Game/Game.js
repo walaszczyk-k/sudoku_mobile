@@ -58,107 +58,111 @@ const Game = () => {
   return (
     <>
       <section className="home">
-        <div className="home__box home__box--not_main">
-          <Link
-            className="reset_link home__box__header home__box__header--not_main"
-            to="/"
-          >
-            <h1 className="home__box__header__h1 home__box__header__h1--not_main">
-              Sudoku
-              <span className="home__box__header__span home__box__header__span--not_main">
-                game
-              </span>
-            </h1>
-          </Link>
-          <div className="sudoku">
-            <p className="sudoku__timer">
-              <span className="hours">
-                {("0" + Math.floor((time / 3600000) % 60)).slice(-2)}:
-              </span>
-              <span className="minutes">
-                {("0" + Math.floor((time / 60000) % 60)).slice(-2)}:
-              </span>
-              <span className="seconds">
-                {("0" + Math.floor((time / 1000) % 60)).slice(-2)}
-              </span>
-            </p>
-            <div className="sudoku__timer__buttons">
-              {!running && (
+        <div className="sudoku_main_page">
+          <div className="sudoku_main_page__header">
+            <Link className="reset_link sudoku_main_page__header__title" to="/">
+              <h1 className="sudoku_main_page__header__title__h1">
+                Sudoku
+                <span className="sudoku_main_page__header__title__span">game</span>
+              </h1>
+            </Link>
+            <div className="sudoku_main_page__header__timer">
+              <p className="sudoku_main_page__header__timer__p">
+                <span className="hours">
+                  {("0" + Math.floor((time / 3600000) % 60)).slice(-2)}
+                </span>
+                <span>:</span>
+                <span className="minutes">
+                  {("0" + Math.floor((time / 60000) % 60)).slice(-2)}
+                </span>
+                <span>:</span>
+                <span className="seconds">
+                  {("0" + Math.floor((time / 1000) % 60)).slice(-2)}
+                </span>
+              </p>
+              <div className="sudoku_main_page__header__timer__btns">
+                {!running && (
+                  <button
+                    className="sudoku_main_page__header__timer__btns__btn reset_link"
+                    onClick={() => setRunning(true)}
+                  >
+                    Resume
+                  </button>
+                )}
+                {running && (
+                  <button
+                    className="sudoku_main_page__header__timer__btns__btn reset_link"
+                    onClick={() => setRunning(false)}
+                  >
+                    Stop
+                  </button>
+                )}
                 <button
-                  className="sudoku__timer__buttons__button"
-                  onClick={() => setRunning(true)}
+                  className="sudoku_main_page__header__timer__btns__btn reset_link"
+                  onClick={() => newGameActions()}
                 >
-                  Resume
+                  New Game
                 </button>
-              )}
-              {running && (
                 <button
-                  className="sudoku__timer__buttons__button"
-                  onClick={() => setRunning(false)}
+                  className="sudoku_main_page__header__timer__btns__btn reset_link"
+                  onClick={() => checkGame()}
                 >
-                  Stop
+                  Check
                 </button>
-              )}
-              <button
-                className="sudoku__timer__buttons__button"
-                onClick={() => newGameActions()}
-              >
-                New Game
-              </button>
-              <button
-                className="sudoku__timer__buttons__button"
-                onClick={() => checkGame()}
-              >
-                Check
-              </button>
-            </div>
-            <div className="sudoku__box">
-              {sudokuData.map((number, index) => {
-                if (number === ".") {
-                  if (running) {
-                    return (
-                      <input
-                        className="sudoku__box__cell"
-                        type="text"
-                        maxLength={1}
-                        style={{
-                          background:
-                            isChecked ||
-                            sudokuChecker.length === 0 ||
-                            sudokuChecker[index]
-                              ? "transparent"
-                              : "red",
-                          fontWeight: 900,
-                        }}
-                        onChange={(e) => handleChange(index, e)}
-                      ></input>
-                    );
-                  } else {
-                    return (
-                      <input
-                        className="sudoku__box__cell"
-                        type="text"
-                        maxLength={1}
-                        style={{
-                          background:
-                            !isChecked ||
-                            sudokuChecker.length == !0 ||
-                            sudokuChecker[index]
-                              ? "transparent"
-                              : "red",
-                          fontWeight: 900,
-                        }}
-                        disabled
-                      ></input>
-                    );
-                  }
-                } else {
-                  return <div className="sudoku__box__cell">{number}</div>;
-                }
-              })}
+              </div>
             </div>
           </div>
-          <Footer />
+          <div className="sudoku_main_page__game">
+            <div className="sudoku">
+              <div className="sudoku__box">
+                {sudokuData.map((number, index) => {
+                  if (number === ".") {
+                    if (running) {
+                      return (
+                        <input
+                          className="sudoku__box__cell"
+                          type="number"
+                          maxLength={1}
+                          style={{
+                            background:
+                              isChecked ||
+                              sudokuChecker.length === 0 ||
+                              sudokuChecker[index]
+                                ? "transparent"
+                                : "red",
+                            fontWeight: 900,
+                            textAlign: "center"
+                          }}
+                          onChange={(e) => handleChange(index, e)}
+                        ></input>
+                      );
+                    } else {
+                      return (
+                        <input
+                          className="sudoku__box__cell"
+                          type="number"
+                          maxLength={1}
+                          style={{
+                            background:
+                              !isChecked ||
+                              sudokuChecker.length == !0 ||
+                              sudokuChecker[index]
+                                ? "transparent"
+                                : "red",
+                            fontWeight: 900,
+                            textAlign: "center"
+                          }}
+                          disabled
+                        ></input>
+                      );
+                    }
+                  } else {
+                    return <div className="sudoku__box__cell">{number}</div>;
+                  }
+                })}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
