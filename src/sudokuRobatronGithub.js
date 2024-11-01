@@ -1,6 +1,7 @@
 /*
     Sudoku.js
     ---------
+    https://github.com/robatron/sudoku.js
 
     A Sudoku puzzle generator and solver JavaScript library.
 
@@ -126,7 +127,7 @@
             for(var si in SQUARES){
                 var square = SQUARES[si];
                 
-                if(candidates[square].length == 1){
+                if(candidates[square].length === 1){
                     single_candidates.push(candidates[square]);
                 }
             }
@@ -139,7 +140,7 @@
                 var givens_idxs = [];
                 for(var i in SQUARES){
                     var square = SQUARES[i];
-                    if(candidates[square].length == 1){
+                    if(candidates[square].length === 1){
                         board += candidates[square];
                         givens_idxs.push(i);
                     } else {
@@ -246,7 +247,7 @@
         for(var square in candidates_map){
             var candidates = candidates_map[square];
             cur_row.push(candidates);
-            if(i % 9 == 8){
+            if(i % 9 === 8){
                 rows.push(cur_row);
                 cur_row = [];
             }
@@ -493,7 +494,7 @@
         var squares_vals_map = {};
         
         // Make sure `board` is a string of length 81
-        if(board.length != SQUARES.length){
+        if(board.length !== SQUARES.length){
             throw "Board/squares length mismatch.";
             
         } else {
@@ -606,7 +607,7 @@
         var cur_row = [];
         for(var i in board_string){
             cur_row.push(board_string[i]);
-            if(i % 9 == 8){
+            if(i % 9 === 8){
                 rows.push(cur_row);
                 cur_row = [];
             }

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import Footer from "../Footer/Footer";
 // https://github.com/robatron/sudoku.js, MIT licence
 import { sudoku } from "../sudokuRobatronGithub";
+import { GameSettingsContext } from "../GameSettings/GameSettings";
+
 
 const Game = () => {
   const [time, setTime] = useState(0);
@@ -12,9 +13,16 @@ const Game = () => {
   const [sudokuCurrent, setsudokuCurrent] = useState([]);
   const [sudokuChecker, setSudokuChecker] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
+  const { difficulty, username } = useContext(GameSettingsContext);
 
   const loadSudokuData = () => {
-    let sudokuGenerator = sudoku.board_string_to_grid(sudoku.generate("easy"));
+    // "easy":         62
+    // "medium":       53
+    // "hard":         44
+    // "very-hard":    35
+    // "insane":       26
+    // "inhuman":      17
+    let sudokuGenerator = sudoku.board_string_to_grid(sudoku.generate(difficulty));
     let sudokuDataArray = [].concat(...sudokuGenerator);
     setsudokuCurrent(sudokuDataArray);
     setsudokuResults([].concat(...sudoku.solve(sudokuDataArray)));
@@ -44,7 +52,6 @@ const Game = () => {
     setTime(0);
     setRunning(true);
     setsudokuData(loadSudokuData());
-    console.log(sudokuChecker);
   };
 
   const checkGame = () => {
@@ -145,7 +152,6 @@ const Game = () => {
                           style={{
                             background:
                               !isChecked ||
-                              sudokuChecker.length == !0 ||
                               sudokuChecker[index]
                                 ? "transparent"
                                 : "red",
