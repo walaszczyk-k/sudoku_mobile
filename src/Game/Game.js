@@ -229,7 +229,15 @@ const Game = () => {
                       You win!!!
                     </p>
                     <p className="home__box__modal__header__box__p">
-                      Your time: {time}
+                      Your time:{" "}
+                      {("0" +
+                        Math.floor((time / 3600000) % 60)).slice(-2) +
+                        ":" +
+                        ("0" +
+                        Math.floor((time / 60000) % 60)).slice(-2) +
+                        ":" +
+                        ("0" +
+                        Math.floor((time / 1000) % 60)).slice(-2)}
                     </p>
                     <p
                       className="home__box__modal__header__box__p"
@@ -242,9 +250,6 @@ const Game = () => {
                     </p>
                     <p className="home__box__modal__header__box__p">
                       max. check number: {possibleCheckNumber}
-                    </p>
-                    <p className="home__box__modal__header__box__p">
-                      #TODO: tutaj wjade z buta jeszcze
                     </p>
                   </div>
                   <Link

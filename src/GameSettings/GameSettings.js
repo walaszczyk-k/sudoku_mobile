@@ -10,9 +10,9 @@ export const GameSettingsContext = createContext({
 });
 
 export const GameSettingsProvider = ({ children }) => {
-  const [difficulty, setDifficulty] = useState("medium");
-  const [username, setUsername] = useState("username");
-  const [possibleCheckNumber, setPossibleCheckNumber] = useState(3);
+  const [difficulty, setDifficulty] = useState(localStorage.getItem("lsGameLevel") || "medium");
+  const [username, setUsername] = useState(localStorage.getItem("lsUsername") || "username");
+  const [possibleCheckNumber, setPossibleCheckNumber] = useState(localStorage.getItem("lsCheckNum") || 3);
   return (
     <GameSettingsContext.Provider
       value={{

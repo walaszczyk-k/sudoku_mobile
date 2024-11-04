@@ -12,13 +12,19 @@ const Settings = () => {
     setPossibleCheckNumber,
   } = useContext(GameSettingsContext);
   const handleDifficultyChange = (event) => {
-    setDifficulty(event.target.value);
+    let gameLevel = event.target.value;
+    setDifficulty(gameLevel);
+    localStorage.setItem("lsGameLevel", gameLevel);
   };
   const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+    let username = event.target.value;
+    setUsername(username);
+    localStorage.setItem("lsUsername", username)
   };
   const handlePossibleCheckNumberChange = (event) => {
-    setPossibleCheckNumber(event.target.value);
+    let checkNum = event.target.value;
+    setPossibleCheckNumber(checkNum);
+    localStorage.setItem("lsCheckNum", checkNum)
   };
 
   return (
