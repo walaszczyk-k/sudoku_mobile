@@ -1,15 +1,24 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { GameSettingsContext } from "../GameSettings/GameSettings"; 
-
+import { GameSettingsContext } from "../GameSettings/GameSettings";
 
 const Settings = () => {
-  const { difficulty, setDifficulty, username, setUsername } = useContext(GameSettingsContext);
+  const {
+    difficulty,
+    setDifficulty,
+    username,
+    setUsername,
+    possibleCheckNumber,
+    setPossibleCheckNumber,
+  } = useContext(GameSettingsContext);
   const handleDifficultyChange = (event) => {
     setDifficulty(event.target.value);
   };
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
+  };
+  const handlePossibleCheckNumberChange = (event) => {
+    setPossibleCheckNumber(event.target.value);
   };
 
   return (
@@ -43,9 +52,7 @@ const Settings = () => {
                   <option value="inhuman">Inhuman</option>
                 </select>
               </div>
-              <h3 className="home__box__article__box__header">
-                User name
-              </h3>
+              <h3 className="home__box__article__box__header">User name</h3>
               <div className="home__box__article__box__select_container">
                 <input
                   type="text"
@@ -54,10 +61,22 @@ const Settings = () => {
                   placeholder="Enter username"
                 />
               </div>
-          </div>
-        </article>
-      </div>
-    </section>
+              <h3 className="home__box__article__box__header">
+                Maximum check number
+              </h3>
+              <div className="home__box__article__box__select_container">
+                <input
+                  type="text"
+                  pattern="\d*"
+                  maxLength={2}
+                  value={possibleCheckNumber}
+                  onChange={handlePossibleCheckNumberChange}
+                />
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
     </>
   );
 };

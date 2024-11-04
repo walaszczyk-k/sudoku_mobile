@@ -41,6 +41,12 @@ $grey-color: #333;
   color: $grey-color;
 }
 
+.button_disabled{
+  border-color: #888;
+  color: #888;
+
+}
+
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
@@ -133,22 +139,23 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
       border-radius: 40px;
 
       &__header {
-        padding: 0 10px;
-        text-align: center;
+        padding: 0 0 10px 0;
         font-size: 1.8rem;
-      }
+        border-bottom: 1px solid black;
 
-      &__p {
-        padding: 28px 0;
-        font-size: 2rem;
-        text-align: center;
+      &__box {
+        margin: 20px 0;
+        &__p {
+          font-size: 1.4rem;
+        }
       }
+    }
 
       &__choice_btn {
         @include btn(12px, 0, 1.4rem);
         width: 64%;
         font-weight: 600;
-        $color_buttons: ("1": $green-color, "2": $red-color, "3": $yellow-color);
+        $color_buttons: ("1": $green-color, "3": $red-color, "2": $yellow-color);
         @each $idx, $color in $color_buttons {
           &:nth-of-type(#{$idx}) {
             background: $color;
@@ -346,6 +353,18 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
       animation: boxes-bottom (random(25) + 7) + s linear infinite;
     }
   }
+}
+
+.winner_modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: rgba(161, 241, 42, 0.927);
+  border-radius: 40px;
+  width: 70dvw;
+  
 }
 
 @keyframes gradient {
