@@ -16,6 +16,7 @@ const Game = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [isWinner, setIsWinner] = useState(false);
   const [possibleCheckNum, setPossibleCheckNum] = useState(possibleCheckNumber);
+  const [moveNumber, setMoveNumber] = useState(0);
 
   const loadSudokuData = () => {
     // "easy":         62
@@ -48,6 +49,8 @@ const Game = () => {
   }, [running]);
 
   useEffect(() => {
+    // count movements
+    setMoveNumber(moveNumber + 1);
     // check result after move
     setSudokuChecker(
       sudokuResults.map((element, index) => element === sudokuCurrent[index])
@@ -59,6 +62,24 @@ const Game = () => {
     if (sudokuChecker.length > 0 && !sudokuChecker.includes(false)) {
       setIsWinner(true);
       setRunning(false);
+      // TODO: check_number na score 
+      const currentResults = {
+        "username": username,
+        "difficulty_level": difficulty,
+        "check_number": possibleCheckNum,
+        "time": ("0" +
+          Math.floor((time / 3600000) % 60)).slice(-2) +
+          ":" +
+          ("0" +
+          Math.floor((time / 60000) % 60)).slice(-2) +
+          ":" +
+          ("0" +
+          Math.floor((time / 1000) % 60)).slice(-2),
+      }
+      let lsResults = JSON.parse(localStorage.getItem("lsResults"));
+      lsResults = lsResults == null ? [] : lsResults;
+      lsResults.push(currentResults);
+      localStorage.setItem("lsResults", JSON.stringify(lsResults));
     } else {
       setIsWinner(false);
     }
@@ -76,6 +97,7 @@ const Game = () => {
     setRunning(true);
     setIsChecked(false);
     setPossibleCheckNum(possibleCheckNumber);
+    setMoveNumber(0);
     document.querySelectorAll("input").forEach((element) => {
       element.value = "";
     });
@@ -229,7 +251,7 @@ const Game = () => {
                       You win!!!
                     </p>
                     <p className="home__box__modal__header__box__p">
-                      Your time:{" "}
+                      Your time: 
                       {("0" +
                         Math.floor((time / 3600000) % 60)).slice(-2) +
                         ":" +
@@ -238,6 +260,9 @@ const Game = () => {
                         ":" +
                         ("0" +
                         Math.floor((time / 1000) % 60)).slice(-2)}
+                    </p>
+                    <p className="home__box__modal__header__box__p">
+                      Move number: {moveNumber}
                     </p>
                     <p
                       className="home__box__modal__header__box__p"
