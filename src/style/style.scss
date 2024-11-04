@@ -72,10 +72,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     right: 50%;
     justify-content: space-between;
     width: 45dvw;
-    height: 60dvh;
+    height: 70dvh;
 
     &--not_main {
       width: 92dvw;
+      height: 60dvh;
     }
 
     &__header {
@@ -204,11 +205,15 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
     &__footer {
       position: absolute;
-      bottom: -30%;
+      bottom: -18%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 50vw;
       text-align: center;
+
+      &--not_main {
+        bottom: -30%;
+      }
 
       &__p {
         font-size: 1.6rem;
@@ -365,6 +370,22 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   border-radius: 40px;
   width: 80dvw;
   
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #0e3107;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+th {
+  background-color: #21a428;
 }
 
 @keyframes gradient {

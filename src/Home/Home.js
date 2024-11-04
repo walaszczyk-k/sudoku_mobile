@@ -36,6 +36,12 @@ const Home = () => {
               >
                 Settings
               </Link>
+              <Link
+                className="reset_link home__box__btns__btn"
+                to={"/dashboard"}
+              >
+                Dashboard
+              </Link>
             </div>
           <Footer />
         </div>

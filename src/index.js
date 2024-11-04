@@ -9,6 +9,7 @@ import LetsPlay from "./OtherPages/LetsPlay";
 import HowToPlay from "./OtherPages/HowToPlay";
 import Game from "./Game/Game";
 import Settings from "./OtherPages/Settings";
+import Dashboard from "./OtherPages/Dashboard";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +23,7 @@ root.render(
         <Route path="/how-to-play" element={<HowToPlay />}></Route>
         <Route path="/settings" element={<Settings />}></Route>
         <Route path="/game" element={<Game />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
       </Routes>
     </Router>
   </GameSettingsProvider>
