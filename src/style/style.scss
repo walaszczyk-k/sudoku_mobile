@@ -283,9 +283,9 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
       &__btns {
         flex-wrap: nowrap;
         &__btn {
-          @include btn(6px, 8px, 1.2rem);
-          margin-left: 4px;
-          margin-right: 4px;
+          @include btn(6px, 8px, 1.1rem);
+          margin-left: 1px;
+          margin-right: 1px;
         }
       }
 
@@ -363,7 +363,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   z-index: 10;
   background-color: rgba(161, 241, 42, 0.927);
   border-radius: 40px;
-  width: 70dvw;
+  width: 80dvw;
   
 }
 

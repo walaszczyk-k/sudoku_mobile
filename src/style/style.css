@@ -245,11 +245,11 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   border-radius: 40px;
   background-color: transparent;
   font-weight: 900;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-transform: uppercase;
   text-align: center;
-  margin-left: 4px;
-  margin-right: 4px;
+  margin-left: 1px;
+  margin-right: 1px;
 }
 .sudoku_main_page__game {
   background-color: rgba(65, 56, 56, 0.152);
@@ -294,64 +294,64 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   border: 3px solid #666;
 }
 .box-animated:nth-child(1) {
-  top: 18%;
-  left: 58%;
-  animation: boxes-top 29s linear infinite;
+  top: 14%;
+  left: 33%;
+  animation: boxes-top 16s linear infinite;
 }
 .box-animated:nth-child(2) {
-  top: 31%;
-  left: 34%;
-  animation: boxes-top 26s linear infinite;
+  top: 27%;
+  left: 39%;
+  animation: boxes-top 14s linear infinite;
 }
 .box-animated:nth-child(3) {
-  top: 29%;
-  left: 1%;
-  animation: boxes-top 22s linear infinite;
-}
-.box-animated:nth-child(4) {
-  top: 10%;
+  top: 8%;
   left: 57%;
   animation: boxes-top 27s linear infinite;
 }
-.box-animated:nth-child(5) {
+.box-animated:nth-child(4) {
   top: 29%;
-  left: 67%;
-  animation: boxes-top 27s linear infinite;
+  left: 30%;
+  animation: boxes-top 11s linear infinite;
+}
+.box-animated:nth-child(5) {
+  top: 8%;
+  left: 70%;
+  animation: boxes-top 17s linear infinite;
 }
 .box-animated:nth-child(6) {
-  top: 30%;
-  left: 71%;
-  animation: boxes-top 19s linear infinite;
+  top: 26%;
+  left: 27%;
+  animation: boxes-top 18s linear infinite;
 }
 .box-animated:nth-child(7) {
-  top: 12%;
-  left: 72%;
-  animation: boxes-top 8s linear infinite;
+  top: 26%;
+  left: 9%;
+  animation: boxes-top 13s linear infinite;
 }
 .box-animated:nth-child(8) {
-  bottom: 7%;
+  bottom: -3%;
   right: 65%;
-  animation: boxes-bottom 8s linear infinite;
+  animation: boxes-bottom 13s linear infinite;
 }
 .box-animated:nth-child(9) {
-  bottom: 6%;
-  right: 10%;
-  animation: boxes-bottom 30s linear infinite;
+  bottom: 8%;
+  right: 69%;
+  animation: boxes-bottom 10s linear infinite;
 }
 .box-animated:nth-child(10) {
   bottom: 14%;
-  right: 4%;
-  animation: boxes-bottom 9s linear infinite;
+  right: 56%;
+  animation: boxes-bottom 8s linear infinite;
 }
 .box-animated:nth-child(11) {
-  bottom: 11%;
-  right: 18%;
-  animation: boxes-bottom 23s linear infinite;
+  bottom: 8%;
+  right: 3%;
+  animation: boxes-bottom 12s linear infinite;
 }
 .box-animated:nth-child(12) {
   bottom: 2%;
-  right: 44%;
-  animation: boxes-bottom 18s linear infinite;
+  right: 68%;
+  animation: boxes-bottom 9s linear infinite;
 }
 
 .winner_modal {
@@ -362,7 +362,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
   z-index: 10;
   background-color: rgba(161, 241, 42, 0.927);
   border-radius: 40px;
-  width: 70dvw;
+  width: 80dvw;
 }
 
 @keyframes gradient {
