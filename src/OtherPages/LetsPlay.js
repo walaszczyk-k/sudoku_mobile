@@ -10,7 +10,6 @@ const LetsPlay = () => {
     username,
     setUsername,
     possibleCheckNumber,
-    setPossibleCheckNumber,
   } = useContext(GameSettingsContext);
   if (!username) {
     setUsername("RandomUsername");
@@ -60,7 +59,7 @@ const LetsPlay = () => {
               Back to main menu
             </Link>
           </div>
-          <Footer />
+          <Footer not_main={true} />
         </div>
       </section>
     </>
