@@ -55,7 +55,7 @@ const Dashboard = () => {
             <div className="home__box__article__box">
               {!results.length ? (
                 <p style={{ fontSize: "1.6rem" }}>
-                  Brak wyników do wyświetlenia.
+                  No results.
                 </p>
               ) : (
                 <>
