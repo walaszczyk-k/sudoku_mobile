@@ -1,0 +1,21 @@
+@use "variables" as vars;
+
+.timer {
+  @include vars.flex($direction: column, $align_items: center);
+  flex-basis: 66%;
+  &__time {
+    margin: 2px 0;
+    align-items: center;
+    & span {
+      font-size: 2.2rem;
+      padding: 2%;
+    }
+  }
+  &__buttons {
+    &__button {
+      @include vars.btn(6px, 8px, 1.1rem);
+      margin: auto 2px;
+      cursor: pointer;
+    }
+  }
+}

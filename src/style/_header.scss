@@ -1,0 +1,41 @@
+@use "variables" as vars;
+
+.header {
+  @include vars.flex($align_items: center, $justify_content: space-between);
+  width: vars.$mainWidth;
+  height: 10dvh;
+  margin: 0 auto;
+
+  &__logo {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    line-height: 1;
+    color: vars.$grey-color;
+    user-select: none;
+    font-size: 3rem;
+    
+    &--home_page {
+        font-size: 4rem;
+    }
+
+    &--span {
+      display: block;
+      font-size: 2rem;
+      text-transform: lowercase;
+      font-weight: 400;
+      text-align: left;
+
+      &--home_page {
+          font-size: 3rem;
+          text-align: center;
+      }
+    }
+  }
+}
+
+
+.header_game {
+  @include vars.flex($align_items: baseline, $justify_content: space-between);
+  width: vars.$mainWidth;
+}

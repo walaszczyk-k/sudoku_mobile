@@ -1,0 +1,40 @@
+@use "variables" as vars;
+
+.modal {
+  @include vars.centerElement;
+  @include vars.flex($direction: column, $align_items: center, $justify_content: center);
+  width: 76dvw;
+  padding: 36px 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 40px;
+  &__header {
+    padding-bottom: 10px;
+    font-size: 1.8rem;
+    border-bottom: 1px solid black;
+  }
+  &__box {
+    width: 60%;
+    margin-top: 20px;
+    &__info {
+      margin-bottom: 30px;
+      &__p {
+        font-size: 1.4rem;
+        margin: 4px 0;
+      }
+    }
+    &__links {
+      @include vars.flex($direction: column, $align_items: center, $justify_content: center);
+      &__link {
+        @include vars.btn(12px, 0, 1.4rem);
+        width: 100%;
+        margin: 6px 0;
+        $color_buttons: ("1": vars.$green-color, "3": vars.$red-color, "2": vars.$yellow-color);
+        @each $idx, $color in $color_buttons {
+          &:nth-of-type(#{$idx}) {
+            background: $color;
+          }
+        }
+      }
+    }
+  }
+}

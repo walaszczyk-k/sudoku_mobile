@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { GameSettingsProvider } from './GameSettings/GameSettings';
+import { GameSettingsProvider } from './contexts/GameSettings';
 
 import "./style/style.css";
-import Home from "./Home/Home";
-import LetsPlay from "./OtherPages/LetsPlay";
-import HowToPlay from "./OtherPages/HowToPlay";
-import Game from "./Game/Game";
-import Settings from "./OtherPages/Settings";
-import Dashboard from "./OtherPages/Dashboard";
+import HomePage from "./pages/HomePage";
+import HowToPlayPage from "./pages/HowToPlayPage";
+import SeettingsPage from "./pages/SettingsPage";
+import DashboardPage from "./pages/DashboardPage";
+import LetsPlayPage from "./pages/LetsPlayPage";
+import GamePage from "./pages/GamePage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,12 +18,12 @@ root.render(
   <GameSettingsProvider>
     <Router>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/before-game" element={<LetsPlay />}></Route>
-        <Route path="/how-to-play" element={<HowToPlay />}></Route>
-        <Route path="/settings" element={<Settings />}></Route>
-        <Route path="/game" element={<Game />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/before-game" element={<LetsPlayPage />}></Route>
+        <Route path="/how-to-play" element={<HowToPlayPage />}></Route>
+        <Route path="/settings" element={<SeettingsPage />}></Route>
+        <Route path="/game" element={<GamePage />}></Route>
+        <Route path="/dashboard" element={<DashboardPage />}></Route>
       </Routes>
     </Router>
   </GameSettingsProvider>

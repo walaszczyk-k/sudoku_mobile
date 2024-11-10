@@ -1,0 +1,20 @@
+@use "variables" as vars;
+
+// TODO: colors, fz
+.footer {
+  & * {
+    font-size: 1.6rem;
+  }
+  &__p {
+      text-align: center;
+  }
+  &__span {
+    &:nth-child(1) {
+      color: yellowgreen;
+    }
+
+    &:nth-child(2) a {
+      color: rgb(138, 70, 138);
+    }
+  }
+}

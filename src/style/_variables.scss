@@ -1,0 +1,32 @@
+$green-color: rgb(142, 255, 142);
+$red-color: rgb(255, 133, 133);
+$yellow-color: rgb(255, 255, 134);
+$blue-color: rgb(102, 218, 253);
+$grey-color: #333;
+$mainWidth: 94dvw;
+
+@mixin centerElement {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flex($direction: row, $align_items: flex-start, $justify_content: flex-start) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align_items;
+  justify-content: $justify_content;
+}
+
+@mixin btn($paddingVert, $paddingHor, $fz) {
+  margin: 8px 0;
+  padding: $paddingVert $paddingHor;
+  border: 1px solid $grey-color;
+  border-radius: 40px;
+  background-color: transparent;
+  font-weight: 900;
+  font-size: $fz;
+  text-transform: uppercase;
+  text-align: center;
+}
