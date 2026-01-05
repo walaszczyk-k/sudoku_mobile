@@ -1,8 +1,8 @@
 @use "variables" as vars;
 
 .header {
-  @include vars.flex($align_items: center, $justify_content: space-between);
-  width: vars.$mainWidth;
+  @include vars.flex($align-items: center, $justify-content: space-between);
+  width: vars.$main-width;
   height: 10dvh;
   margin: 0 auto;
 
@@ -36,6 +36,11 @@
 
 
 .header_game {
-  @include vars.flex($align_items: baseline, $justify_content: space-between);
-  width: vars.$mainWidth;
+  @include vars.flex($align-items: unset, $justify-content: unset);
+  width: vars.$main-width;
+  margin: 0 auto;
+  & .header {
+    margin: auto;
+    width: auto;
+  }
 }

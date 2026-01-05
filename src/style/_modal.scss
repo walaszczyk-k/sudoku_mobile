@@ -1,8 +1,8 @@
 @use "variables" as vars;
 
 .modal {
-  @include vars.centerElement;
-  @include vars.flex($direction: column, $align_items: center, $justify_content: center);
+  @include vars.center-element;
+  @include vars.flex($direction: column, $align-items: center, $justify-content: center);
   width: 76dvw;
   padding: 36px 10px;
   background-color: rgba(0, 0, 0, 0.3);
@@ -23,13 +23,13 @@
       }
     }
     &__links {
-      @include vars.flex($direction: column, $align_items: center, $justify_content: center);
+      @include vars.flex($direction: column, $align-items: center, $justify-content: center);
       &__link {
         @include vars.btn(12px, 0, 1.4rem);
         width: 100%;
         margin: 6px 0;
-        $color_buttons: ("1": vars.$green-color, "3": vars.$red-color, "2": vars.$yellow-color);
-        @each $idx, $color in $color_buttons {
+        $color-buttons: ("1": vars.$green-color, "3": vars.$red-color, "2": vars.$yellow-color);
+        @each $idx, $color in $color-buttons {
           &:nth-of-type(#{$idx}) {
             background: $color;
           }

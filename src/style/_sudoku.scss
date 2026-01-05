@@ -1,11 +1,11 @@
 @use "variables" as vars;
 
 .sudoku {
-  width: vars.$mainWidth;
+  width: vars.$main-width;
   margin: 0 auto;
   &__box {
     display: grid;
-    grid-template-columns: repeat(9,calc(vars.$mainWidth / 9));
+    grid-template-columns: repeat(9,calc(vars.$main-width / 9));
     grid-template-rows: repeat(9, calc(86dvh / 9));
     border: 1px solid black;
 
@@ -16,7 +16,8 @@
       border: 0.1px dotted vars.$grey-color;
       font-size: 2.1rem;
       &:focus {
-        background-color: #33333357;
+        background-color: rgba(51, 51, 51, 0.34);
+        outline: none;
       }
       &:nth-child(3n+1){
         border-left: 1px solid black;
@@ -33,7 +34,7 @@
 
 
 .winner_modal {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -41,5 +42,7 @@
   background-color: rgba(161, 241, 42, 0.927);
   border-radius: 40px;
   width: 80dvw;
-  
+  max-width: 500px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }

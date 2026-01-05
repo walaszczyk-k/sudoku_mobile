@@ -3,30 +3,31 @@ $red-color: rgb(255, 133, 133);
 $yellow-color: rgb(255, 255, 134);
 $blue-color: rgb(102, 218, 253);
 $grey-color: #333;
-$mainWidth: 94dvw;
+$main-width: 94dvw;
 
-@mixin centerElement {
+@mixin center-element {
   position: absolute;
   top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-@mixin flex($direction: row, $align_items: flex-start, $justify_content: flex-start) {
+@mixin flex($direction: row, $align-items: flex-start, $justify-content: flex-start) {
   display: flex;
   flex-direction: $direction;
-  align-items: $align_items;
-  justify-content: $justify_content;
+  align-items: $align-items;
+  justify-content: $justify-content;
 }
 
-@mixin btn($paddingVert, $paddingHor, $fz) {
+@mixin btn($padding-vert, $padding-hor, $font-size) {
   margin: 8px 0;
-  padding: $paddingVert $paddingHor;
+  padding: $padding-vert $padding-hor;
   border: 1px solid $grey-color;
   border-radius: 40px;
   background-color: transparent;
   font-weight: 900;
-  font-size: $fz;
+  font-size: $font-size;
   text-transform: uppercase;
   text-align: center;
+  cursor: pointer;
 }

@@ -1,3 +1,4 @@
+@use "variables" as vars;
 @use "main";
 @use "home_buttons";
 @use "header";
@@ -6,7 +7,10 @@
 @use "timer";
 @use "sudoku";
 @use "animations";
-@use "variables" as vars;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   margin: 0;
@@ -22,21 +26,21 @@
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
+  width: 100%;
+  border-collapse: collapse;
+  th,
+  td {
     padding: 8px;
     border: 1px solid #0e3107;
     text-align: center;
     font-size: 1.2rem;
   }
-  
+
   th {
     background-color: #21a428;
   }
-  
-  .button {
-    @include vars.btn($paddingVert: 8px, $paddingHor: 6px, $fz: 1.4rem)
-  }
+}
+
+.button {
+  @include vars.btn($padding-vert: 8px, $padding-hor: 6px, $font-size: 1.4rem);
+}

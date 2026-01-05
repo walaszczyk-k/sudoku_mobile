@@ -1,5 +1,6 @@
-import Header from "../components/Header";
-import ContentBox from "../components/ContentBox";
+import React from "react";
+import Header from "../components/Header.jsx";
+import ContentBox from "../components/ContentBox.jsx";
 
 const HowToPlayPage = () => {
   const contents = [
@@ -31,25 +32,21 @@ const HowToPlayPage = () => {
     },
   ];
   return (
-    <>
-      <section className="main">
-        <Header />
+    <section className="main">
+      <Header />
 
-        <div className="main__content_container">
-          <h2 className="main__content_container__header">
-            How to play sudoku?
-          </h2>
+      <div className="main__content_container">
+        <h2 className="main__content_container__header">How to play sudoku?</h2>
 
-          {contents.map((item, idx) => {
-            return (
-              <div className="main__content_container__box" key={idx}>
-                <ContentBox header={item.header} content={item.content} />
-              </div>
-            );
-          })}
-        </div>
-      </section>
-    </>
+        {contents.map(({header, content}) => {
+          return (
+            <div className="main__content_container__box" key={header}>
+              <ContentBox header={header} content={content} />
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 };
 
