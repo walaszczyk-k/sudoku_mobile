@@ -1,0 +1,8 @@
+{
+  "short_name": "Sudoku Game",
+  "name": "Sudoku Game ReactJS by mrsw444",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
