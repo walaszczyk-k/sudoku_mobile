@@ -29,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Suspense
         fallback={
           <div
+            className="main"
             style={{
               display: "flex",
               justifyContent: "center",
@@ -36,6 +37,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               height: "100vh",
               fontSize: "1.5rem",
               fontWeight: "bold",
+              letterSpacing: "1.4px"
             }}
           >
             Loading...
