@@ -1,6 +1,5 @@
 @use "variables" as vars;
 
-// TODO: padding, color
 .home_buttons {
   @include vars.flex(
     $direction: column,
@@ -9,13 +8,12 @@
   );
   width: 100%;
   &__btn {
-    @include vars.btn(18px, 8px, 1.6rem);
+    @include vars.btn($padding-vert: 18px, $padding-hor: 8px, $font-size: 1.6rem);
     width: 100%;
-    text-align: center;
     &:nth-child(1) {
       padding: 24px 8px;
-      border: 2px solid green;
-      color: green;
+      border: 2px solid vars.$green-darker-color;
+      color: vars.$green-darker-color;
       animation: playButton-animation 2s ease infinite 10s;
     }
   }

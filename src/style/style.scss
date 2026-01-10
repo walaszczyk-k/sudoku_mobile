@@ -16,8 +16,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 10px;
-  font-family: "Grandstander", cursive;
+  font-size: vars.$default-font-size;
+  font-family: vars.$font-family;
 }
 
 .reset_link {
@@ -27,17 +27,16 @@
 
 table {
   width: 100%;
-  border-collapse: collapse;
   th,
   td {
     padding: 8px;
-    border: 1px solid #0e3107;
+    border: 1px solid vars.$grey-color;
     text-align: center;
     font-size: 1.2rem;
   }
 
   th {
-    background-color: #21a428;
+    background-color: vars.$green-darker-color;
   }
 }
 

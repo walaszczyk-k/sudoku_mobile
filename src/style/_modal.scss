@@ -10,7 +10,7 @@
   &__header {
     padding-bottom: 10px;
     font-size: 1.8rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid vars.$grey-color;
   }
   &__box {
     width: 60%;
@@ -25,7 +25,7 @@
     &__links {
       @include vars.flex($direction: column, $align-items: center, $justify-content: center);
       &__link {
-        @include vars.btn(12px, 0, 1.4rem);
+        @include vars.btn($padding-vert: 12px, $padding-hor: 0, $font-size: 1.4rem);
         width: 100%;
         margin: 6px 0;
         $color-buttons: ("1": vars.$green-color, "3": vars.$red-color, "2": vars.$yellow-color);

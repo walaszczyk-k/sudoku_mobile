@@ -39,3 +39,22 @@
   animation-iteration-count: infinite;
   will-change: transform, opacity;
 }
+
+
+@keyframes playButton-animation {
+  0% {
+    transform: translateY(0);
+  }
+
+  20% {
+    transform: translateY(-15%);
+  }
+
+  45% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

@@ -11,7 +11,6 @@ const SudokuDashboard = ({
     const isEmpty = value === ".";
     const inputValue = isEmpty ? "" : value;
 
-    // Pole startowe (nieedytowalne)
     if (!isEmpty) {
       return (
         <div key={index} className="sudoku__box__cell">
@@ -20,7 +19,6 @@ const SudokuDashboard = ({
       );
     }
 
-    // Kolor po sprawdzeniu
     const backgroundColor =
       !running && isChecked && !sudokuChecker[index] ? "red" : "transparent";
 

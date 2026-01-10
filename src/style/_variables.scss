@@ -1,13 +1,19 @@
+// font styles
+$font-family: "Grandstander", cursive;
+$default-font-size: 10px;
+// colors
 $green-color: rgb(142, 255, 142);
+$green-darker-color: rgb(10, 173, 10);
 $red-color: rgb(255, 133, 133);
 $yellow-color: rgb(255, 255, 134);
 $blue-color: rgb(102, 218, 253);
 $grey-color: #333;
+// sizes
 $main-width: 94dvw;
 
 @mixin center-element {
   position: absolute;
-  top: 48%;
+  top: 48%; // slight shift
   left: 50%;
   transform: translate(-50%, -50%);
 }

@@ -7,39 +7,36 @@
     display: grid;
     grid-template-columns: repeat(9,calc(vars.$main-width / 9));
     grid-template-rows: repeat(9, calc(86dvh / 9));
-    border: 1px solid black;
+    border: 1px solid vars.$grey-color;
 
     &__cell {
       display: flex;
       justify-content: center;
       align-items: center;
       border: 0.1px dotted vars.$grey-color;
-      font-size: 2.1rem;
+      font-size: 2rem;
       &:focus {
-        background-color: rgba(51, 51, 51, 0.34);
         outline: none;
       }
       &:nth-child(3n+1){
-        border-left: 1px solid black;
+        border-left: 1px solid vars.$grey-color;
       }
       &:nth-child(3n){
-        border-right: 1px solid black;
+        border-right: 2px solid vars.$grey-color;
     }
       &:nth-child(n + 19):nth-child(-n + 27),
       &:nth-child(n + 46):nth-child(-n + 54) {
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid vars.$grey-color;
     }}
   }
 }
 
 
 .winner_modal {
+  @include vars.center-element();
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 10;
-  background-color: rgba(161, 241, 42, 0.927);
+  background-color: vars.$green-color;
   border-radius: 40px;
   width: 80dvw;
   max-width: 500px;

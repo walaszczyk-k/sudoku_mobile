@@ -20,9 +20,6 @@ const Time = ({ time }) => {
 
 export default Time;
 
-// Opcjonalne usprawnienia (jeśli chcesz)
 // przeniesienie formattera do utils/formatTime.js
 // React.memo(Time) (render co 10 ms → realna oszczędność)
 // obsługa czasu > 60h (jeśli planujesz maratony)
-// Jeżeli chcesz, mogę teraz:
-// zunifikować formatowanie czasu w całej aplikacji

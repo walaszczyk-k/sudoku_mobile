@@ -20,7 +20,7 @@
   }
   &__buttons {
     &__button {
-      @include vars.btn(6px, 8px, 1.1rem);
+      @include vars.btn($padding-vert: 6px, $padding-hor: 8px, $font-size: 1.1rem);
       margin: 0 4px;
       transition: background-color 0.4s ease;
       &:last-child{
@@ -34,6 +34,6 @@
 }
 @keyframes flash {
   10% {
-    background-color: rgba(205, 50, 50, 0.24);
+    background-color: vars.$green-darker-color;
   }
 }
