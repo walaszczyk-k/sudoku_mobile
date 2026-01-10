@@ -2,22 +2,23 @@ import React from "react";
 
 const SudokuDashboard = ({
   sudokuData,
+  sudokuCurrent,
   running,
   sudokuChecker,
   isChecked,
   handleChange,
 }) => {
   const renderCell = (value, index) => {
-    const isEmpty = value === ".";
-    const inputValue = isEmpty ? "" : value;
-
-    if (!isEmpty) {
+    const isUserCell = sudokuData[index] === ".";
+    if (!isUserCell) {
       return (
         <div key={index} className="sudoku__box__cell">
           {value}
         </div>
       );
     }
+    const isEmpty = value === ".";
+    const inputValue = isEmpty ? "" : value;
 
     const backgroundColor =
       !running && isChecked && !sudokuChecker[index] ? "red" : "transparent";
@@ -32,9 +33,7 @@ const SudokuDashboard = ({
         disabled={!running}
         style={{
           background: backgroundColor,
-          fontWeight: 900,
           textAlign: "center",
-          color: "black",
         }}
         onChange={(e) => {
           const val = e.target.value;
@@ -46,7 +45,7 @@ const SudokuDashboard = ({
     );
   };
 
-  return <>{sudokuData.map(renderCell)}</>;
+  return <>{sudokuCurrent.map(renderCell)}</>;
 };
 
 export default SudokuDashboard;

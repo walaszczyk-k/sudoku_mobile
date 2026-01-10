@@ -11,13 +11,13 @@ const GamePage = () => {
     useContext(GameSettingsContext);
   const [time, setTime] = useState(0);
   const [running, setRunning] = useState(true);
-  const [sudokuResults, setSudokuResults] = useState([]);
-  const [sudokuCurrent, setSudokuCurrent] = useState([]);
-  const [sudokuChecker, setSudokuChecker] = useState([]);
-  const [isChecked, setIsChecked] = useState(false);
-  const [isWinner, setIsWinner] = useState(false);
-  const [possibleCheckNum, setPossibleCheckNum] = useState(possibleCheckNumber);
-  const [moveNumber, setMoveNumber] = useState(0);
+  const [sudokuResults, setSudokuResults] = useState([]); // correct numbers array
+  const [sudokuCurrent, setSudokuCurrent] = useState([]); // current numbers in board
+  const [sudokuChecker, setSudokuChecker] = useState([]); // [true, false,...] if idx is correct
+  const [isChecked, setIsChecked] = useState(false); // is check inputed numbers correct (user action)
+  const [isWinner, setIsWinner] = useState(false); // is winner
+  const [possibleCheckNum, setPossibleCheckNum] = useState(possibleCheckNumber); // setting (user setting)
+  const [moveNumber, setMoveNumber] = useState(0); // count user move numbers
 
   // helpers
   const formatTime = (ms) => {
@@ -30,16 +30,15 @@ const GamePage = () => {
   };
 
   const loadSudokuData = () => {
-    const grid = sudoku.board_string_to_grid(
-      window.sudoku.generate(difficulty)
-    );
+    const grid = sudoku.board_string_to_grid(window.sudoku.generate(difficulty));
     const sudokuDataArray = [].concat(...grid);
     setSudokuCurrent(sudokuDataArray);
     setSudokuResults([].concat(...window.sudoku.solve(sudokuDataArray)));
     return sudokuDataArray;
   };
-  const [sudokuData, setSudokuData] = useState(() => loadSudokuData());
-
+  
+  const [sudokuData, setSudokuData] = useState(() => loadSudokuData()); // initial board numbers
+  
   // timer
   useEffect(() => {
     if (!running) return;
@@ -74,9 +73,9 @@ const GamePage = () => {
 
   const handleChange = (index, value) => {
     setSudokuCurrent((prev) => {
-      const copy = [...prev];
-      copy[index] = value;
-      return copy;
+      const copied = [...prev];
+      copied[index] = value;
+      return copied;
     });
     setIsChecked(false);
   };
@@ -113,7 +112,8 @@ const GamePage = () => {
       <div className="sudoku">
         <div className="sudoku__box">
           <SudokuDashboard
-            sudokuData={sudokuCurrent}
+            sudokuData={sudokuData}
+            sudokuCurrent={sudokuCurrent}
             running={running}
             sudokuChecker={sudokuChecker}
             isChecked={isChecked}
